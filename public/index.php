@@ -26,7 +26,7 @@ if (!isset($_SESSION['steam_id'])) {
 		return (string) $result;
 	}
 
-	$key = "YOUR_API_KEY"; // Set Your API key here.
+	$key = getenv("STEAM_API_KEY"); // Set API key from environment variable.
 	$steamid = $_SESSION['steam_id'];	// Set target's steam id here.
 	echo "<h2>SteamID : {$steamid}</h2>";
 	$accountid = convert_steamid_64bit_to_32bit($steamid);
