@@ -1,6 +1,18 @@
 <?php
-// error_reporting(E_ALL & ~E_NOTICE);
-// ini_set("display_errors", 1);
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set("display_errors", 1);
+include_once("../vendor/autoload.php");
+
+session_start();
+if (!isset($_SESSION['steam_id'])) {
+	// Require sign in.
+	echo "
+	<div style='text-align:center'>
+		<p><a href='/auth.php'><img src='http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_02.png' width='109' height='66' border='0'></a></p>
+		<p>Please sign in.</p>
+	</div>
+	";
+} else {
 
 	// https://gist.github.com/almirsarajcic/4664387
 	function convert_steamid_64bit_to_32bit($id)
@@ -15,7 +27,7 @@
 	}
 
 	$key = "YOUR_API_KEY"; // Set Your API key here.
-	$steamid = 76561197961028586;	// Set target's steam id here.
+	$steamid = $_SESSION['steam_id'];	// Set target's steam id here.
 	echo "<h2>SteamID : {$steamid}</h2>";
 	$accountid = convert_steamid_64bit_to_32bit($steamid);
 	echo "<h2>accountid : {$accountid}</h2>";
@@ -57,3 +69,5 @@
 		</div>
 		";
 	}
+
+}

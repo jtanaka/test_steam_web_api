@@ -1,0 +1,17 @@
+{
+	"name": "Test Steam Web API",
+	"description": "Test App for Steam Web API",
+	"homepage": "http://techpand.com",
+	"type": "project",
+	"license": "MIT",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/iignatov/LightOpenID"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"iignatov/lightopenid": "*"
+	}
+}
